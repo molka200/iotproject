@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_application_1/component/mybutton.dart';
-import 'package:flutter_application_1/component/square_title.dart';
-import 'package:flutter_application_1/component/textfield.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../component/mybutton.dart';
+import '../component/square_title.dart';
+import '../component/textfield.dart';
+import '../pages/home_page.dart';
+import '../firebase_options.dart';
+
 
 
 
@@ -15,9 +19,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _MyAppState extends State<LoginPage> {
+
+  @override
+  void initState() {
+     Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    super.initState();
+  }
   // Text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  
 
   // sign user in method
   void signUserIn() async {
@@ -39,6 +52,7 @@ class _MyAppState extends State<LoginPage> {
       );
 
       Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
     } on FirebaseAuthException catch (e) {
       // wrong email
       if (e.code == 'user-not-found') {
@@ -52,6 +66,10 @@ class _MyAppState extends State<LoginPage> {
       }
     }
   }
+
+
+
+
 
   void wrongEmailMessage() {
     showDialog(
@@ -119,11 +137,11 @@ class _MyAppState extends State<LoginPage> {
                     obscureText: true,
                   ),
                   // forgot password ?
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  const Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
+                      children:  [
                         Text(
                           'Forgot Password?',
                           style: TextStyle(color: Colors.grey),
@@ -134,17 +152,20 @@ class _MyAppState extends State<LoginPage> {
                   const SizedBox(height: 25),
                   // sign in button
                   MyButton(
-                    onTap: signUserIn,
+                    onTap:() { 
+                      signUserIn();
+                    }                        
+                     ,
                     key: const Key('sign_in_button'),
                   ),
                   const SizedBox(height: 25),
                   // or continue with
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  const Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
                       children: [
                         Expanded(
-                          child: const Divider(
+                          child:  Divider(
                             thickness: 0.5,
                             color: Colors.grey,
                           ),
@@ -204,4 +225,5 @@ class _MyAppState extends State<LoginPage> {
       ),
     );
   }
-}
+  }
+

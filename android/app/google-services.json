@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "438803168101",
-    "project_id": "iotproject-a6cbb",
-    "storage_bucket": "iotproject-a6cbb.appspot.com"
+    "project_number": "228750390179",
+    "project_id": "iotproject-c77a9",
+    "storage_bucket": "iotproject-c77a9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:438803168101:android:371dd56f07cd5eda84bf8c",
+        "mobilesdk_app_id": "1:228750390179:android:ec4556e9db20ec82776016",
         "android_client_info": {
           "package_name": "com.example.flutter_application_1"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAmeOW9O1hThYjNXvtFYEIQN3oZDCdNSgI"
+          "current_key": "AIzaSyCs-Pp3ZWycL43kNn9tk0JTXb8XuahZF9Y"
         }
       ],
       "services": {
